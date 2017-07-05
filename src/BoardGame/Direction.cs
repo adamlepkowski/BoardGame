@@ -8,6 +8,9 @@ namespace BoardGame
 {
     public enum Direction
     {
-        N
+        N = 1,
+        E = 2,
+        S = 3,
+        W = 4
     }
 }

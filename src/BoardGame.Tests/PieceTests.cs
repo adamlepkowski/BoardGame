@@ -12,7 +12,7 @@ namespace BoardGame.Tests
         [TestCase(Direction.W, Direction.N)]
         public void RotateRight_InitialDirectionInParamters_PieceRotatedToTargetDirectionFromParamters(Direction initialDirection, Direction expectedDirection)
         {
-            var piece = new Piece(0, 0, initialDirection);
+            var piece = new Piece(new Position(0,0), initialDirection);
 
             piece.RotateRight();
 
@@ -25,7 +25,7 @@ namespace BoardGame.Tests
         [TestCase(Direction.E, Direction.N)]
         public void RotateLeft_InitialDirectionInParamters_PieceRotatedToTargetDirectionFromParamters(Direction initialDirection, Direction expectedDirection)
         {
-            var piece = new Piece(0, 0, initialDirection);
+            var piece = new Piece(new Position(0, 0), initialDirection);
 
             piece.RotateLeft();
 

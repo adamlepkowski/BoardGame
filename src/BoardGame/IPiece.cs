@@ -2,10 +2,12 @@
 {
     public interface IPiece
     {
-        string CurrentPosition { get; }
+        IPosition CurrentPosition { get; set; }
 
         void RotateRight();
 
         void RotateLeft();
+
+        void Move(Board board);
     }
 }

@@ -43,7 +43,16 @@
     <Compile Include="Board.cs" />
     <Compile Include="Direction.cs" />
     <Compile Include="IPiece.cs" />
+    <Compile Include="MoveStrategies\MoveEast.cs" />
+    <Compile Include="MoveFactory\MoveFactory.cs" />
+    <Compile Include="MoveStrategies\MoveNorth.cs" />
+    <Compile Include="MoveStrategies\MoveSouth.cs" />
+    <Compile Include="MoveStrategies\MoveWest.cs" />
+    <Compile Include="MoveStrategies\IMove.cs" />
+    <Compile Include="MoveFactory\IMoveFactory.cs" />
+    <Compile Include="IPosition.cs" />
     <Compile Include="Piece.cs" />
+    <Compile Include="Position.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

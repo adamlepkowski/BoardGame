@@ -13,18 +13,22 @@ namespace BoardGame.Tests
             var piece = board.Piece;
 
             Assert.IsNotNull(board.Piece);
-            Assert.AreEqual("0 0 N", piece.CurrentPosition);
+            Assert.AreEqual("0 0 N", piece.ToString());
         }
 
         [TestCase("R", "0 0 E")]
         [TestCase("L", "0 0 W")]
+        [TestCase("M", "0 1 N")]
+        [TestCase("MRMLMRM", "2 2 E")]
+        [TestCase("RMMMLMM", "3 2 N")]
         public void MovePiece_CommandProvidedInParameters_PieceShouldMoveToPositionFromParamters(string commands, string expectedPosition)
         {
             var board = new Board();
 
             board.MovePiece(commands);
 
-            Assert.AreEqual(expectedPosition, board.Piece.CurrentPosition);
+            Assert.IsNotNull(board.Piece);
+            Assert.AreEqual(expectedPosition, board.Piece.ToString());
         }
     }
 }

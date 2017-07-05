@@ -7,7 +7,7 @@
 
         public Board()
         {
-            this.Piece = new Piece(0, 0, Direction.N);
+            this.Piece = new Piece(new Position(0, 0), Direction.N);
         }
 
         public IPiece Piece { get; private set; }
@@ -23,6 +23,9 @@
                         break;
                     case 'R':
                         this.Piece.RotateRight();
+                        break;
+                    case 'M':
+                        this.Piece.Move(this);
                         break;
                 }
             }

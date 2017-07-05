@@ -1,19 +1,20 @@
-﻿namespace BoardGame
+﻿
+using BoardGame.MoveFactory;
+
+namespace BoardGame
 {
     public class Piece : IPiece
     {
         public Direction Direction { get; set; }
-        private readonly int _y;
-        private readonly int _x;
+        private readonly IMoveFactory _moveFactory = new MoveFactory.MoveFactory();
 
-        public Piece(int y, int x, Direction direction)
+        public Piece(IPosition currentPosition, Direction direction)
         {
-            _y = y;
-            _x = x;
+            CurrentPosition = currentPosition;
             Direction = direction;
         }
-        
-        public string CurrentPosition => $"{this._x} {this._y} {this.Direction}";
+
+        public IPosition CurrentPosition { get; set; }
 
         public void RotateRight()
         {
@@ -37,6 +38,21 @@
             {
                 this.Direction--;
             }
+        }
+
+        public void Move(Board board)
+        {
+            var move = this._moveFactory.CreateMove(this.Direction);
+
+            var newPosition = move.GetNewPosition(this.CurrentPosition);
+
+            this.CurrentPosition.Y = newPosition.Y;
+            this.CurrentPosition.X = newPosition.X;
+        }
+
+        public override string ToString()
+        {
+            return $"{this.CurrentPosition.X} {this.CurrentPosition.Y} {this.Direction}";
         }
     }
 }

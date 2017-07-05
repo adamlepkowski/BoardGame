@@ -1,4 +1,5 @@
 ﻿
+using System;
 using BoardGame.MoveFactory;
 
 namespace BoardGame
@@ -40,14 +41,22 @@ namespace BoardGame
             }
         }
 
-        public void Move(Board board)
+        public void Move(IBoard board)
         {
+            if (board == null)
+            {
+                throw new ArgumentNullException(nameof(board));
+            }
+
             var move = this._moveFactory.CreateMove(this.Direction);
 
             var newPosition = move.GetNewPosition(this.CurrentPosition);
 
-            this.CurrentPosition.Y = newPosition.Y;
-            this.CurrentPosition.X = newPosition.X;
+            if (board.IsPositionValid(newPosition))
+            {
+                this.CurrentPosition.Y = newPosition.Y;
+                this.CurrentPosition.X = newPosition.X;
+            }
         }
 
         public override string ToString()

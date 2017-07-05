@@ -8,6 +8,6 @@
 
         void RotateLeft();
 
-        void Move(Board board);
+        void Move(IBoard board);
     }
 }
